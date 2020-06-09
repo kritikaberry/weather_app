@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta charset="utf=8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Weather the city</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		<!--<link rel="stylesheet" type="text/css" href="styles.css">-->
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+		<style>
+			body{
+				background-image: linear-gradient(to right, rgba(0,255,255,0), rgba(0,255,255,1));
+				text-align: center
+			}
+			h1{
+				text-align: center;
+				font-style: cursive;
+				font-weight:900;
+				color: #e65100 ;
+				margin-top: 100px;
+
+			}
+		    div .card{
+				text-align:center;
+				margin-left: 380px;
+			}
+
+			form{
+				display: inline-block;
+
+			}
+			@media screen and (max-width: 800px) {
+  form,table{
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
+}
+	    </style>
+    </head>
+    <body>
+    	<div class="container">
+        	<h1 class="display-3">Know your weather!</h1>
+        	<hr>
+        	<div class="wrap">
+        	<div class="search">
+        	<form method="POST"class="col-md-6 col-md-offset-3">
+              <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+               <div class="input-group">
+                 <input type="text" name="city" placeholder="Enter city name!" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                  <div class="input-group-btn">
+                  <button type="submit" class="btn btn-primary rounded-pill btn-block shadow-sm">Search City
+                  </button>
+                  </div>
+               </div>
+              </div>
+           </form>
+       </div>
+   </div>
+   <div id="demo">
+   <div class="align-self-center" style="display:inline-block; width: 18rem;">
+      	<table class="table table-borderless" >
+   		<tbody>
+   			{% if weather.city and weather.Temp_min and weather.Temp_max and weather.description and weather.Humidity and weather.Pressure %}
+   			<tr>
+   				<td class="display-5 table-success"><img src="http://api.openweathermap.org/img/w/{{ weather.icon }}.png" class="align-self-center mr-3" alt="icon">{{ weather.city }}</td>
+   			</tr>
+   			<tr class="table-success">
+   				<td>{{ weather.description }}</td>
+   			</tr>
+   			<tr class="table-danger">
+   				<td>Temp_max:{{ weather.Temp_max}}°C</td>
+   		 	</tr>
+   		 	<tr class="table-warning">
+   		 		<td>Temp_min:{{ weather.Temp_min}}°C</td>
+   		 	</tr>
+   		 	<tr class="table-info">
+   		 		<td>Humidity:{{ weather.Humidity }}%</td>
+   		 	</tr>
+   		 	<tr class="table-primary">
+   		 		<td>Pressure:{{ weather.Pressure }}Pa</td>
+   		 	</tr>
+   		 	{% endif %}
+   		 </tbody>
+   		</table>
+   	</div>
+   </div>
+    		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		</div>
+	</body>
+</html>
